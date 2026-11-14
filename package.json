@@ -1,6 +1,6 @@
 {
   "name": "solaris-client",
-  "version": "0.5.1-beta.1",
+  "version": "0.5.1-beta.2",
   "description": "Solaris Client - launcher de Minecraft Java ligero y de código abierto",
   "main": "main.js",
   "license": "MIT",
