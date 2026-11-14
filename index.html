@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' https: data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100b1d">
+  <title>Solaris Client</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-locked">
+  <section id="auth-gate" class="auth-gate" aria-label="Inicio de sesión de Solaris Client">
+    <div class="auth-card">
+      <div class="auth-brand" aria-label="Solaris Client"><span class="solaris-orbit-mark" aria-hidden="true"><span class="solar-core"></span><span class="solar-orbit"></span></span><strong>Solaris <span>Client</span></strong><b>BETA</b></div>
+      <div class="auth-kicker">SOLARIS CLIENT</div>
+      <h1>Bienvenido a Solaris</h1>
+      <p>Inicia sesión con tu cuenta Microsoft para entrar al launcher y usar Minecraft Java Edition.</p>
+      <button id="gate-login" class="auth-login" type="button">Continuar con Microsoft</button>
+      <p id="gate-status" class="auth-status">Autenticación oficial de Microsoft · Solaris no guarda tu contraseña.</p>
+      <div class="auth-foot"><span>Solaris Client</span><span>Windows 10/11 · Código abierto</span></div>
+    </div>
+  </section>
+  <aside class="side">
+    <a class="brand" href="#" aria-label="Solaris Client, inicio">
+      <span class="brand-mark"><span class="solaris-orbit-mark" aria-hidden="true"><span class="solar-core"></span><span class="solar-orbit"></span></span></span>
+      <span class="brand-copy">SOLARIS<small>Client <b>BETA</b></small></span>
+    </a>
+
+    
+    <nav class="nav-list" aria-label="Navegación principal">
+      <button class="nav active" type="button" data-view="play"><span class="nav-icon">⌂</span><span>Inicio</span></button>
+      <button class="nav" type="button" data-view="instances"><span class="nav-icon">◇</span><span>Instancias</span></button>
+      <button class="nav" type="button" data-view="news"><span class="nav-icon">♙</span><span>Cuentas</span></button>
+      <button class="nav" type="button" data-view="mods"><span class="nav-icon">✣</span><span>Mods</span></button>
+      
+      <button class="nav" type="button" data-view="settings"><span class="nav-icon">⚙</span><span>Ajustes</span></button>
+      <button class="nav" type="button" data-view="about"><span class="nav-icon">ⓘ</span><span>Acerca de</span></button>
+    </nav>
+
+    <div class="side-bottom">
+      <div class="side-status"><span class="online-dot"></span><span>Launcher listo</span></div>
+      <div class="side-foot">Hecho para explorar.<br><b>Solaris Client</b></div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <header class="topbar">
+      <div class="crumb"><span>Solaris</span><i>/</i><b id="page-name">Jugar</b></div>
+      <div class="topbar-right"><span class="top-pill"><span class="online-dot"></span> SISTEMA EN LÍNEA</span><div class="profile-chip"><span class="profile-avatar">S</span><span id="profile-name">Sin sesión</span></div></div>
+    </header>
+
+    <!-- Inicio -->
+    <section id="view-play" class="view play-view active">
+      <div class="home-hero">
+        <div class="hero-brand">
+          <span class="solaris-orbit-mark" aria-hidden="true"><span class="solar-core"></span><span class="solar-orbit"></span></span>
+          <h1>Solaris Client</h1><span>BETA</span>
+          <p>Tu cliente de Minecraft optimizado</p>
+        </div>
+        <span class="hero-online"><i class="online-dot"></i> En línea</span>
+      </div>
+      <main class="home-main">
+        <section class="game-card">
+          <div class="game-symbol" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 22h36a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8h-7l-7-8h-8l-7 8h-7a8 8 0 0 1-8-8V30a8 8 0 0 1 8-8Z"/><path d="M19 35h12M25 29v12M43 33h.1M49 39h.1"/></svg></div>
+          <div class="game-copy"><h2>Minecraft: Java Edition</h2><p>Juega Minecraft con Solaris Client y tu perfil de optimización.</p></div>
+          <button id="play" class="play home-play" type="button" disabled><span>▶</span> JUGAR</button>
+        </section>
+        <section class="launcher-row">
+          <label><span>Versión</span><select id="version" disabled><option value="">Cargando versiones…</option></select></label>
+          <label><span>Cargador / instancia</span><select id="active-instance"><option value="">Selecciona una instancia Solaris</option></select></label>
+          <button class="home-tool" type="button" data-go="mods">◇ Mods</button>
+          <button id="home-folder" class="home-tool" type="button">▰ Carpeta</button>
+        </section>
+        <section class="home-grid">
+          <article class="home-panel"><h3>📣 Novedades</h3><div class="news-card"><b>Solaris Client</b><span>Playable Beta</span><p>Nuevo diseño, Solaris Boost y preparación del lanzamiento real.</p></div></article>
+          <article class="home-panel performance"><div class="perf-title"><h3>▥ Rendimiento</h3><span class="perf-ok"><i class="online-dot"></i> Activo</span></div><p>Perfil Solaris Boost</p><strong id="home-boost-profile">Equilibrado</strong><div class="perf-bar"><i></i></div><small>Sin estimaciones falsas de FPS.</small></article>
+        </section>
+        <section class="account-strip">
+          <div><b>Cuenta Microsoft</b><span id="profile-name">Sin sesión</span></div>
+          <button id="login" class="btn login-btn" type="button">Iniciar sesión con Microsoft</button>
+          <p id="status" class="status" role="status">Cargando versiones…</p>
+        </section>
+        <input id="username" type="hidden" value=""><span id="selected-version" hidden>Detectando…</span><span id="selected-ram" hidden>2 GB RAM</span>
+      </main>
+    </section>
+
+    <!-- Instancias -->
+    <section id="view-instances" class="view page">
+      <div class="instance-toolbar"><div><div class="eyebrow">BIBLIOTECA SOLARIS</div><h1>Instancias</h1><p class="hint">Tus perfiles de Minecraft, separados y listos para personalizar.</p></div><div class="instance-toolbar-actions"><input id="instance-filter" type="text" placeholder="Buscar instancia…"><button id="new-instance" class="btn" type="button">＋ Crear instancia</button></div></div>
+      <div id="instance-modal" class="instance-modal" hidden>
+        <div class="instance-dialog" role="dialog" aria-modal="true" aria-labelledby="instance-form-title">
+          <div class="instance-dialog-head"><h2 id="instance-form-title">Nueva instancia</h2><button id="instance-close" class="icon-close" type="button" aria-label="Cerrar">×</button></div>
+          <form id="instance-form" class="instance-create-form">
+            <div class="instance-symbol" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 5 55 18v28L32 59 9 46V18Z" fill="none" stroke="currentColor" stroke-width="4"/><path d="m10 18 22 13 22-13M32 31v27" fill="none" stroke="currentColor" stroke-width="3"/></svg></div>
+            <div class="instance-fields">
+              <label>Nombre de la instancia<input id="instance-name" maxlength="48" placeholder="Introduce un nombre o deja vacío para automático"></label>
+              <div class="instance-version-label"><span>Versión de Minecraft</span><label class="mini-toggle"><span>Mostrar snapshots, históricas y locales</span><input id="instance-show-all" type="checkbox"></label></div>
+              <select id="instance-version" required><option value="">Seleccionar versión de Minecraft</option></select>
+              <fieldset class="loader-picker"><legend>Cargador de mods</legend>
+                <label><input type="radio" name="instance-loader-choice" value="vanilla" checked><span>Vanilla</span></label>
+                <label><input type="radio" name="instance-loader-choice" value="fabric"><span>Fabric</span></label>
+                <label><input type="radio" name="instance-loader-choice" value="forge"><span>Forge</span></label>
+                <label><input type="radio" name="instance-loader-choice" value="neoforge"><span>NeoForge</span></label>
+                <label><input type="radio" name="instance-loader-choice" value="quilt"><span>Quilt</span></label>
+              </fieldset>
+              <input id="instance-loader" type="hidden" value="vanilla"><input id="instance-ram" type="hidden" value="2">
+            </div>
+            <div class="instance-dialog-foot"><label class="mini-toggle start-after"><input id="instance-start-after" type="checkbox"><span>Iniciar tras instalar</span></label><div class="dialog-actions"><button class="btn ghost" type="button" id="instance-cancel">Cancelar</button><button class="btn primary" type="submit" id="instance-save">＋ Crear instancia</button></div></div>
+          </form>
+          <p class="status" id="instance-status" role="status"></p>
+        </div>
+      </div>
+      <div id="instance-list" class="instance-list"></div>
+    </section>
+
+    <!-- Noticias -->
+    <section id="view-news" class="view page">
+      <div class="page-heading"><div class="eyebrow">NOVEDADES DE SOLARIS</div><h1>Noticias</h1><p class="hint">Actualizaciones, anuncios y consejos de la comunidad.</p></div>
+      <div id="news-list" class="list"></div>
+    </section>
+
+    <!-- Mods -->
+    <section id="view-mods" class="view page">
+      <div class="mods-heading"><div><div class="eyebrow">EXPLORAR</div><h1>Mods</h1><p class="hint">Descubre mods reales compatibles con tu instancia desde Modrinth o CurseForge.</p></div></div>
+      <div class="mod-categories" aria-label="Categorías de mods">
+        <button class="mod-category active" data-mod-query="">Todos</button><button class="mod-category" data-mod-query="pvp">⚔ PvP</button><button class="mod-category" data-mod-query="horror">☠ Terror</button><button class="mod-category" data-mod-query="anime">✦ Anime</button><button class="mod-category" data-mod-query="performance">⚡ Rendimiento</button><button class="mod-category" data-mod-query="hud">▦ HUD</button><button class="mod-category" data-mod-query="adventure">⌁ Aventura</button><button class="mod-category" data-mod-query="technology">⚙ Tecnología</button><button class="mod-category" data-mod-query="magic">✧ Magia</button>
+      </div>
+      <div class="panel mod-search-panel">
+        <div class="row filters">
+          <select id="mod-source" aria-label="Fuente"><option value="modrinth">Modrinth</option><option value="curseforge">CurseForge</option></select>
+          <select id="mod-loader" aria-label="Loader"><option value="fabric">Fabric</option><option value="forge">Forge</option><option value="neoforge">NeoForge</option><option value="quilt">Quilt</option></select>
+          <input id="mod-query" type="text" placeholder="Busca un mod…" autocomplete="off" spellcheck="false">
+          <button id="mod-search" class="btn" type="button">Buscar <span>→</span></button>
+        </div>
+        <p id="mod-note" class="hint">Los mods se filtran por la versión que elegiste en Jugar.</p>
+      </div>
+      <div id="mod-results" class="list"></div>
+      <div class="section-heading"><div><h2>Mis mods</h2><p class="hint">Contenido instalado en tu carpeta de mods.</p></div>
+        <div class="row"><button id="open-mods" class="btn ghost" type="button">Abrir carpeta</button><button id="refresh-mods" class="btn ghost" type="button">↻ Actualizar</button></div>
+      </div>
+      <p id="mods-dir" class="path"></p>
+      <div id="mods-list" class="list"></div>
+    </section>
+
+
+    <!-- Herramientas -->
+    <section id="view-tools" class="view page">
+      <div class="page-heading"><div class="eyebrow">TU INSTANCIA, TUS ARCHIVOS</div><h1>Herramientas</h1><p class="hint">Funciones locales y reales para la instancia seleccionada.</p></div>
+      <div class="settings-grid">
+        <div class="panel"><h2>☀ Solaris Boost</h2><p class="hint">Aplica opciones gráficas ligeras. No promete FPS: solo cambia ajustes conocidos de Minecraft.</p><select id="boost-profile" aria-label="Perfil Solaris Boost"><option value="low">Bajo rendimiento</option><option value="balanced">Equilibrado</option><option value="quality">Calidad</option></select><button id="boost-apply" class="btn">Aplicar a la instancia</button><p id="boost-status" class="status"></p></div>
+        <div class="panel"><h2>Biblioteca</h2><p class="hint">Abre las carpetas reales de la instancia.</p><div class="instance-actions"><button class="btn library-open" data-kind="worlds">Mundos</button><button class="btn library-open" data-kind="screenshots">Capturas</button><button class="btn library-open" data-kind="resourcepacks">Resource packs</button><button class="btn library-open" data-kind="shaderpacks">Shaders</button></div></div>
+        <div class="panel"><h2>Estadísticas locales</h2><p id="local-stats" class="hint">Selecciona una instancia para verlas.</p></div>
+        <div class="panel"><h2>Carpeta de instancia</h2><p class="hint">Acceso directo a los archivos separados de este perfil.</p><button id="open-instance" class="btn">Abrir carpeta</button></div><div class="panel"><h2>Servidores favoritos</h2><p class="hint">Guarda direcciones localmente para tenerlas a mano.</p><div class="row"><input id="server-address" placeholder="play.ejemplo.net" autocomplete="off"><button id="server-save" class="btn">Guardar</button></div><div id="server-list" class="list"></div></div>
+      </div>
+    </section>
+    <!-- Acerca de -->
+    <section id="view-about" class="view page">
+      <div class="page-heading"><div class="eyebrow">SOLARIS CLIENT</div><h1>Acerca de</h1><p class="hint">Proyecto independiente y de código abierto para Minecraft Java.</p></div>
+      <div class="panel"><div class="panel-heading"><span class="solaris-orbit-mark" aria-hidden="true"><span class="solar-core"></span><span class="solar-orbit"></span></span><div><h2>Solaris Client</h2><p>Creado el <b>13 de noviembre de 2026</b> con la intención de ofrecer un launcher moderno, ligero y accesible, especialmente para equipos modestos.</p></div></div><p class="hint">Windows 10/11 x64 · Licencia MIT · Minecraft Java Edition. Solaris no está afiliado con Mojang ni Microsoft.</p></div>
+    </section>
+
+    <!-- Ajustes -->
+    <section id="view-settings" class="view page">
+      <div class="page-heading"><div class="eyebrow">CONFIGURA TU EXPERIENCIA</div><h1>Ajustes</h1><p class="hint">Ajusta el rendimiento y las preferencias del launcher.</p></div>
+      <div class="settings-grid">
+        <div class="panel">
+          <div class="panel-heading"><span class="panel-icon">▥</span><div><h2>Rendimiento</h2><p class="hint">Memoria dedicada a Minecraft.</p></div></div>
+          <label class="field wide"><span>Memoria RAM <output id="ram-out">2 GB</output></span><input id="ram" type="range" min="1" max="8" step="1" value="2"></label>
+          <p id="ram-guidance" class="hint">Calculando una asignación segura según la memoria disponible…</p>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><span class="panel-icon">⚡</span><div><h2>Modo ligero</h2><p class="hint">Reduce animaciones y efectos visuales del launcher.</p></div></div>
+          <label class="toggle-field"><input id="performance-mode" type="checkbox"> Aplicar ajustes gráficos ligeros al iniciar Minecraft</label>
+          <p class="hint">Reduce distancia de renderizado, partículas, nubes y sombras dentro del juego. Puedes desactivarlo cuando quieras.</p>
+          <label class="toggle-field"><input id="light-mode" type="checkbox" checked> Usar tema claro en Solaris</label>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><span class="panel-icon">⌘</span><div><h2>Java</h2><p class="hint">Ruta del ejecutable de Java.</p></div></div>
+          <label class="field wide"><span>Ruta de Java</span><input id="java-path" type="text" placeholder="Automática" autocomplete="off" spellcheck="false"></label>
+          <p class="hint">Automático por defecto: Solaris detecta Java y, si hace falta, descarga y administra un runtime compatible. La ruta manual es solo para usuarios avanzados.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><span class="panel-icon">↻</span><div><h2>Actualizaciones</h2><p class="hint">Solaris puede buscar y descargar nuevas versiones automáticamente.</p></div></div>
+          <p id="update-status" class="hint">Comprobación automática activada cuando el dueño conecta GitHub Releases.</p>
+          <div class="row"><button id="update-check" class="btn" type="button">Buscar actualización</button><button id="update-install" class="btn primary" type="button" hidden>Reiniciar y actualizar</button></div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><span class="panel-icon">✣</span><div><h2>CurseForge</h2><p class="hint">Conecta tu búsqueda de mods.</p></div></div>
+          <label class="field wide"><span>Clave API de CurseForge</span><input id="cf-key" type="password" placeholder="Pega tu clave aquí" autocomplete="off" spellcheck="false"></label>
+          <p class="hint">La clave se guarda localmente en este equipo.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

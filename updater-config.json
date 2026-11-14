@@ -1,0 +1,7 @@
+{
+  "enabled": false,
+  "provider": "github",
+  "owner": "TU_USUARIO_GITHUB",
+  "repo": "solaris-client",
+  "private": false
+}

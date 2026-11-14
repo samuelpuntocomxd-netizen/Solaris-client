@@ -1,0 +1,12 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+const { createInstance, updateInstance, deleteInstance, readInstances, writeInstances } = require('../lib/instances');
+const data = { name: 'Mi mundo', version: '1.21.4', loader: 'fabric', ram: 4 };
+test('crea una instancia Fabric con ID único', () => { const a = createInstance([], data); const b = createInstance([], { ...data, name: 'Otro' }); assert.notEqual(a.id, b.id); assert.equal(a.loader, 'fabric'); });
+test('admite Vanilla y Forge; rechaza loader no permitido', () => { assert.equal(createInstance([], {...data,loader:'vanilla'}).loader,'vanilla'); assert.equal(createInstance([], {...data,loader:'forge'}).loader,'forge'); assert.throws(()=>createInstance([],{...data,loader:'unknown'})); });
+test('edita y elimina instancias', () => { const a = createInstance([], data); const edited = updateInstance([a], { ...a, name:'Editado', ram:6 }); assert.equal(edited.ram,6); assert.equal(deleteInstance([edited], a.id).length,0); });
+test('evita nombres duplicados y RAM inválida', () => { const a = createInstance([],data); assert.throws(()=>createInstance([a],{...data,name:'MI MUNDO'})); assert.throws(()=>createInstance([],{...data,ram:99})); });
+test('guarda y recupera las instancias', () => { const dir=fs.mkdtempSync(path.join(os.tmpdir(),'solaris-test-')); try { const file=path.join(dir,'instances.json'); const a=createInstance([],data); writeInstances(file,[a]); assert.deepEqual(readInstances(file),[a]); } finally { fs.rmSync(dir,{recursive:true,force:true}); } });

@@ -1,0 +1,23 @@
+SOLARIS CLIENT BETA 0.2.2 - WINDOWS 10 Y WINDOWS 11 (64 BITS)
+
+PREPARAR:
+1. Instala Node.js LTS desde https://nodejs.org/
+2. Extrae todos los archivos de este proyecto.
+3. Con conexion a Internet, ejecuta CREAR-INSTALLER.bat.
+4. El script instala dependencias, comprueba sintaxis, ejecuta pruebas y compila.
+5. Si todo sale bien, el instalador estara en:
+   dist\Solaris-Client-BETA-Installer-0.2.2-beta.1.exe
+6. Ejecuta PRUEBA-WINDOWS.bat para verificar la existencia y SHA-256 del EXE.
+
+PRUEBA EN WINDOWS 10 Y 11:
+- Probar instalacion, primer inicio, accesos directos y desinstalacion.
+- Probar en ambos sistemas, no solo en uno.
+- Comprobar Java, cuenta Microsoft y descarga/ejecucion de Minecraft.
+- Guardar capturas y mensajes de error si falla.
+
+IMPORTANTE:
+- Este proyecto no incluye un EXE ya compilado.
+- La compilacion necesita Internet y puede mostrar avisos de Windows SmartScreen
+  porque el instalador no esta firmado digitalmente.
+- Pasar las pruebas de Node.js no garantiza que Minecraft arranque.
+- No se ha ejecutado una prueba real de instalacion en Windows 10 ni Windows 11.

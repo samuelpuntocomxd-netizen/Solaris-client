@@ -1,0 +1,64 @@
+{
+  "name": "solaris-client",
+  "version": "0.5.1-beta.1",
+  "description": "Solaris Client - launcher de Minecraft Java ligero y de código abierto",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.js && node --check preload.js && node --check renderer.js && node --check lib/launcher-utils.js && node --check lib/instances.js && node --check lib/solaris-hud.js && node --check lib/cosmetics.js",
+    "test": "node --test",
+    "dist:win": "electron-builder --win nsis --x64",
+    "publish:win": "electron-builder --win nsis --x64 --publish always"
+  },
+  "dependencies": {
+    "minecraft-launcher-core": "^3.18.2",
+    "msmc": "^5.0.5",
+    "adm-zip": "^0.5.16",
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "^45.3.2",
+    "electron-builder": "^26.0.12"
+  },
+  "productName": "Solaris Client",
+  "build": {
+    "appId": "com.solarisclient.launcher",
+    "productName": "Solaris Client",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!test/**",
+      "!*.bat"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Solaris-Client-Installer.${ext}",
+      "icon": "assets/solaris-logo.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "TU_USUARIO_GITHUB",
+        "repo": "solaris-client"
+      }
+    ]
+  }
+}
